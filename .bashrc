@@ -1,8 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Custom
-eval `ssh-agent -s`
-ssh-add
+/usr/bin/keychain --nogui ~/.ssh/id_ed25519
+source $HOME/.keychain/DESKTOP-RIGQBQU-sh
 # Custom
 
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
