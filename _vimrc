@@ -1,28 +1,21 @@
-" Configure vim to use plugins
-set nocompatible
-filetype plugin on
-
-" Enable the matchit plugin
-runtime macros/matchit.vim
-
 " Enable search highlighting by default
 set hlsearch
 
-" Enable relative line numbers
+" enable relative line numbers
 set number
 set relativenumber
 
-" Increase ex command history length
+" increase ex command history length
 set history=20
 
-" Make tabs work consistently
+" make tabs work consistently
 set ts=4 sts=4 sw=4 noexpandtab
 
-" Treat all numbers as decimals
+" treat all numbers as decimals
 set nrformats=
 
-" Tab (Buffer) navigation
-nnoremap <silent> [b :bprevious<CR>
+" tab (buffer) navigation
+nnoremap <silent> [b :bprevious<cr>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
@@ -30,5 +23,12 @@ nnoremap <silent> ]B :blast<CR>
 " Select all
 nnoremap <leader>a ggVG
 
-" Undo highlighting
-1noremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" Global replace word
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Centre screen after motion
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+nnoremap <silent> J mzJ`z
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
