@@ -34,6 +34,9 @@ if [[ ! -e ~/.zsh/zsh-autosuggestions ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 fi
 
+## Accept suggestions
+bindkey '^Y' autosuggest-accept
+
 # Source plugins
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

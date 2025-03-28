@@ -8,3 +8,32 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
     cp "$HOME/.wezterm.lua" "$WIN_HOME/.wezterm.lua"
   fi
 fi
+
+# Install packages
+if command -v apt >/dev/null; then
+  sudo apt update
+  # Building neovim
+  sudo apt install -y gcc ninja-build gettext cmake curl build-essential
+  # Building Luarocks
+  sudo apt install -y libreadline-dev unzip
+  # Neovim checkhealth
+  sudo apt install -y ripgrep
+fi
+
+# Build neovim
+cd $HOME && mkdir src && cd src
+git clone https://github.com/neovim/neovim
+cd neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+
+# Build Luarocks (for lazy vim)
+cd $HOME/src
+wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1
+./configure && make && sudo make install
+sudo luarocks install luasocket
+
+# Initialise nvim
+nvim --headless -c "Lazy sync" -c "qa"
