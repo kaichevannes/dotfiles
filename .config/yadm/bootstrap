@@ -1,4 +1,5 @@
 #!/bin/bash
+cd $HOME
 
 # Get the users sudo password
 sudo -v
@@ -11,21 +12,6 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
     cp "$HOME/.wezterm.lua" "$WIN_HOME/.wezterm.lua"
   fi
 fi
-
-# Set up ssh key
-if [ ! -f ~/.ssh/id_ed25519 ]; then
-  sudo ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
-  sudo ssh-add ~/.ssh/id_ed25519
-fi
-
-# Show ssh key
-echo -e "\033[34mCopying generated SSH key to clipboard.\033[0m"
-cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard
-
-LOG_FILE="$HOME/install_log.txt"
-
-# Send to background so we can copy ssh info
-{
 
 # Install packages
 if command -v apt >/dev/null; then
@@ -66,9 +52,12 @@ fi
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
-} > "$LOG_FILE" 2>&1 &
+# Set up ssh key
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  sudo ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+  sudo ssh-add ~/.ssh/id_ed25519
+fi
 
-BACKGROUND_PID=$!
-
-read
-tail -f "$LOG_FILE" --pid $BACKGROUND_PID
+# Show ssh key
+echo -e "\033[34mCopying generated SSH key to clipboard.\033[0m"
+cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard
