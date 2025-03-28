@@ -9,18 +9,21 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/cheva/.zshrc'
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
 
+# Set shell to vi mode
+bindkey -v
+
+zstyle :compinstall filename '/home/cheva/.zshrc'
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 # Download plugins
 # To update: rm -rf ~/.zsh && exec zsh
@@ -44,24 +47,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# fnm
-FNM_PATH="/home/focus/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/focus/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/focus/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/focus/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/focus/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/focus/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi

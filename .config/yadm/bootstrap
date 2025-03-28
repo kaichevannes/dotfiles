@@ -23,7 +23,7 @@ if command -v apt >/dev/null; then
   # Neovim checkhealth
   sudo apt install -y ripgrep lua5.1 liblua5.1-dev
   # Misc packages
-  sudo apt install -y xclip python3-pip
+  sudo apt install -y xclip python3-pip nodejs npm
 fi
 
 # Setup src folder if it doesn't exist
@@ -49,17 +49,12 @@ if ! command -v luarocks >/dev/null; then
   sudo luarocks install luasocket
 fi
 
-# Install node
-curl -o- https://fnm.vercel.app/install | bash
-source $HOME/.zshrc
-fnm install 22
-
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
 # Set git config
 git config --global user.name "Kai Chevannes"
-git config --global core.editor = "vim"
+git config --global core.editor "vim"
 
 # Set up ssh key
 if [ ! -f ~/.ssh/id_ed25519 ]; then
@@ -71,5 +66,3 @@ fi
 # Show ssh key
 echo -e "\033[34mCopying generated SSH key to clipboard.\033[0m"
 cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard
-
-
