@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Move .weztern.lua to Windows home with this wsl instances username
+# Move .weztern.lua to Windows on wsl
 if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
   # Move .wezterm.lua to Windows home
   WIN_HOME="/mnt/c/Users/$(whoami)"
@@ -8,6 +8,9 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
     cp "$HOME/.wezterm.lua" "$WIN_HOME/.wezterm.lua"
   fi
 fi
+
+# Send to background
+{
 
 # Install packages
 if command -v apt >/dev/null; then
@@ -37,3 +40,17 @@ sudo luarocks install luasocket
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
+
+} &
+
+# Set up ssh key
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  ssh-keygen -t ed25519
+  ssh-add ~/.ssh/id_ed25519
+fi
+
+# Show ssh key
+echo "Copying generated SSH key to clipboard. Press enter to foreground setup."
+cat ~/.ssh/id_ed25519.pub && clip < ~/.ssh/id_ed25519.pub
+read
+fg
