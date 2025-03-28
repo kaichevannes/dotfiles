@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get the users sudo password
+sudo -v
+
 # Move .weztern.lua to Windows on wsl
 if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
   # Move .wezterm.lua to Windows home
@@ -9,7 +12,19 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
   fi
 fi
 
-# Send to background
+# Set up ssh key
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  sudo ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+  sudo ssh-add ~/.ssh/id_ed25519
+fi
+
+# Show ssh key
+echo -e "\033[34mCopying generated SSH key to clipboard.\033[0m"
+cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard
+
+LOG_FILE="$HOME/install_log.txt"
+
+# Send to background so we can copy ssh info
 {
 
 # Install packages
@@ -20,37 +35,40 @@ if command -v apt >/dev/null; then
   # Building Luarocks
   sudo apt install -y libreadline-dev unzip
   # Neovim checkhealth
-  sudo apt install -y ripgrep
+  sudo apt install -y ripgrep lua5.1 liblua5.1-dev
+  # Misc packages
+  sudo apt install -y xclip 
 fi
 
+# Setup src folder if it doesn't exist
+mkdir -p $HOME/src
+
 # Build neovim
-cd $HOME && mkdir src && cd src
-git clone https://github.com/neovim/neovim
-cd neovim
-git checkout stable
-make CMAKE_BUILD_TYPE=Release
-sudo make install
+if ! command -v nvim >/dev/null; then
+  cd $HOME/src
+  git clone https://github.com/neovim/neovim
+  cd neovim
+  git checkout stable
+  make CMAKE_BUILD_TYPE=Release
+  sudo make install
+fi
 
 # Build Luarocks (for lazy vim)
-cd $HOME/src
-wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-tar zxpf luarocks-3.11.1
-./configure && make && sudo make install
-sudo luarocks install luasocket
+if ! command -v luarocks >/dev/null; then
+  cd $HOME/src
+  wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+  tar zxpf luarocks-3.11.1.tar.gz
+  cd luarocks-3.11.1
+  ./configure && make && sudo make install
+  sudo luarocks install luasocket
+fi
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
-} &
+} > "$LOG_FILE" 2>&1 &
 
-# Set up ssh key
-if [ ! -f ~/.ssh/id_ed25519 ]; then
-  ssh-keygen -t ed25519
-  ssh-add ~/.ssh/id_ed25519
-fi
+BACKGROUND_PID=$!
 
-# Show ssh key
-echo "Copying generated SSH key to clipboard. Press enter to foreground setup."
-cat ~/.ssh/id_ed25519.pub && clip < ~/.ssh/id_ed25519.pub
 read
-fg
+tail -f "$LOG_FILE" --pid $BACKGROUND_PID
