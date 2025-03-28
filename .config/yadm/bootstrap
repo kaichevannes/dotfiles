@@ -57,8 +57,9 @@ fnm install 22
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
-# Set git name
+# Set git config
 git config --global user.name "Kai Chevannes"
+git config --global core.editor = "vim"
 
 # Set up ssh key
 if [ ! -f ~/.ssh/id_ed25519 ]; then
