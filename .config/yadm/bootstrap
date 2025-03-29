@@ -4,9 +4,8 @@ cd $HOME
 # Get the users sudo password
 sudo -v
 
-# Move .weztern.lua to Windows on wsl
+# Move .wezterm.lua to Windows on wsl
 if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
-  # Move .wezterm.lua to Windows home
   WIN_HOME="/mnt/c/Users/$(whoami)"
   if [ -d $WIN_HOME ]; then
     cp "$HOME/.wezterm.lua" "$WIN_HOME/.wezterm.lua"
@@ -23,9 +22,16 @@ if command -v apt >/dev/null; then
   # Neovim checkhealth
   sudo apt install -y ripgrep lua5.1 liblua5.1-dev
   # Misc packages
-  sudo apt install -y xclip python3-pip nodejs npm
+  sudo apt install -y xclip python3-pip nodejs npm fzf tree
 fi
 
+# install rust
+if ! command -v cargo >/dev/null; then
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
+  . "$HOME/.cargo/env"
+fi
+
+### Build stuff
 # Setup src folder if it doesn't exist
 mkdir -p $HOME/src
 
@@ -44,17 +50,33 @@ if ! command -v luarocks >/dev/null; then
   cd $HOME/src
   wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
   tar zxpf luarocks-3.11.1.tar.gz
+  rm luarocks-3.11.1.tar.gz
   cd luarocks-3.11.1
   ./configure && make && sudo make install
   sudo luarocks install luasocket
 fi
+
+
+# Build Yazi
+if ! command -v yazi >/dev/null; then
+  cd $HOME/src
+  git clone https://github.com/sxyazi/yazi.git
+  cd yazi
+  cargo build --release --locked
+  sudo mv target/release/yazi target/release/ya /usr/local/bin/
+fi
+### Done building
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
 # Set git config
 git config --global user.name "Kai Chevannes"
-git config --global core.editor "vim"
+git config --global core.editor "nvim"
+
+# Remove README.md
+cd $HOME
+rm README.md
 
 # Set up ssh key
 if [ ! -f ~/.ssh/id_ed25519 ]; then
@@ -64,5 +86,5 @@ if [ ! -f ~/.ssh/id_ed25519 ]; then
 fi
 
 # Show ssh key
-echo -e "\033[34mCopying generated SSH key to clipboard.\033[0m"
+echo -e "\n\033[34mCopying generated SSH key to clipboard.\033[0m"
 cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard

@@ -9,6 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Command history
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -17,6 +18,10 @@ setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
+
+# Set neovim to be the default editor
+export VISUAL=nvim
+export EDITOR=nvim
 
 # Set shell to vi mode
 bindkey -v
@@ -41,6 +46,12 @@ fi
 bindkey '^Y' autosuggest-accept
 
 # Source plugins
+# fzf
+# <C-r> fuzzy find command history
+# <C-t> fuzzy find subdirectories
+# <A-c> cd into fuzzy find subdirectories
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
