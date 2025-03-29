@@ -64,3 +64,4 @@ fi
 # Show ssh key
 echo -e "\n\033[34mCopying generated SSH key to clipboard.\033[0m"
 cat ~/.ssh/id_ed25519.pub | tee /dev/tty | xclip -selection clipboard
+echo -e "\n\033[34mTo finish setup, run: git config --global user.email \"your_email@example.com\"\033[0m"
