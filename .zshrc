@@ -23,6 +23,10 @@ setopt HIST_SAVE_NO_DUPS
 export VISUAL=nvim
 export EDITOR=nvim
 
+# Initialise homebrew
+# command -v brew || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin"
+command -v brew && eval "$(brew shellenv)"
+
 # Set shell to vi mode
 bindkey -v
 

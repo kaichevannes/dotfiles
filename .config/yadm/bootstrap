@@ -1,10 +1,9 @@
 #!/bin/bash
-cd $HOME
 
 # Get the users sudo password
 sudo -v
 
-# Move .wezterm.lua to Windows on wsl
+# Move .wezterm.lua to Windows home on wsl
 if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
   WIN_HOME="/mnt/c/Users/$(whoami)"
   if [ -d $WIN_HOME ]; then
@@ -12,62 +11,9 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
   fi
 fi
 
-# Install packages
-if command -v apt >/dev/null; then
-  sudo apt update
-  # Building neovim
-  sudo apt install -y gcc ninja-build gettext cmake curl build-essential
-  # Building Luarocks
-  sudo apt install -y libreadline-dev unzip
-  # Neovim checkhealth
-  sudo apt install -y ripgrep lua5.1 liblua5.1-dev
-  # Misc packages
-  sudo apt install -y xclip python3-pip nodejs npm fzf tree
-fi
-
-# install rust
-if ! command -v cargo >/dev/null; then
-  curl https://sh.rustup.rs -sSf | sh -s -- -y
-  . "$HOME/.cargo/env"
-fi
-
-### Build stuff
-# Setup src folder if it doesn't exist
-mkdir -p $HOME/src
-
-# Build neovim
-if ! command -v nvim >/dev/null; then
-  cd $HOME/src
-  git clone https://github.com/neovim/neovim
-  cd neovim
-  git checkout stable
-  make CMAKE_BUILD_TYPE=Release
-  sudo make install
-fi
-
-# Build Luarocks (for lazy vim)
-if ! command -v luarocks >/dev/null; then
-  cd $HOME/src
-  wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-  tar zxpf luarocks-3.11.1.tar.gz
-  rm luarocks-3.11.1.tar.gz
-  cd luarocks-3.11.1
-  ./configure && make && sudo make install
-  sudo luarocks install luasocket
-fi
-
-
-# Build Yazi
-if ! command -v yazi >/dev/null; then
-  cd $HOME/src
-  git clone https://github.com/sxyazi/yazi.git
-  cd yazi
-  cargo build --release --locked
-  sudo mv target/release/yazi target/release/ya /usr/local/bin/
-fi
-
-cd $HOME
-### Done building
+cd $HOME/.config/yadm
+/bin/bash ./packages.sh
+/bin/bash ./build.sh
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
