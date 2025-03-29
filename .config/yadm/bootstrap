@@ -13,7 +13,6 @@ fi
 
 cd $HOME/.config/yadm
 /bin/bash ./packages.sh
-/bin/bash ./build.sh
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
