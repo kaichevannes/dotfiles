@@ -4,6 +4,8 @@
 3. Install yadm
 4. yadm clone
 
+**Note: As of March 2025, wezterm nightly is required for yazi to work. This is because it uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
+
 ## Windows
 ```
 (Elevated Powershell) $ winget install wez.wezterm 
