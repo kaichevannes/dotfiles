@@ -65,6 +65,8 @@ if ! command -v yazi >/dev/null; then
   cargo build --release --locked
   sudo mv target/release/yazi target/release/ya /usr/local/bin/
 fi
+
+cd $HOME
 ### Done building
 
 # Initialise nvim
@@ -73,10 +75,6 @@ nvim --headless -c "Lazy sync" -c "qa"
 # Set git config
 git config --global user.name "Kai Chevannes"
 git config --global core.editor "nvim"
-
-# Remove README.md
-cd $HOME
-rm README.md
 
 # Set up ssh key
 if [ ! -f ~/.ssh/id_ed25519 ]; then
