@@ -12,7 +12,17 @@ if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
 fi
 
 # Install homebrow if it isn't already installed.
-if ! command -v brew >/dev/null 2>&1; then
+if ! command -v brew 2>&1 >/dev/null; then
+  # Requirements when on linux
+  if command -v apt 2>&1 >/dev/null; then
+    sudo apt update && sudo apt install build-essential procps curl file git
+  elif command -v pacman 2>&1 >/dev/null; then
+    sudo pacman -Sy base-devel procps-ng curl file git
+  elif command -v yum 2>&1 >/dev/null; then
+    sudo yum groupinstall 'Development Tools'
+    sudo yum update && sudo yum install procps-ng curl file git
+  fi
+  
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH"
   eval "$(brew shellenv)"
@@ -22,7 +32,7 @@ fi
 if command -v brew >/dev/null; then
   brew update
   # Basics
-  brew install gcc curl fzf xclip
+  brew install gcc fzf xclip
   # Neovim
   brew install neovim ripgrep tree-sitter node npm luarocks
   # LSPs

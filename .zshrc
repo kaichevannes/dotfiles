@@ -24,8 +24,8 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 # Initialise homebrew
-# command -v brew || export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin"
-command -v brew && eval "$(brew shellenv)"
+export PATH="/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:$PATH"
+eval "$(brew shellenv)"
 
 # Set shell to vi mode
 bindkey -v
