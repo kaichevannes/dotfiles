@@ -11,7 +11,7 @@
 (Elevated Powershell) $ winget install wez.wezterm 
 (Elevated Powershell) $ wsl.exe --install
          (WSL Ubuntu) $ cd ~
-         (WSL Ubuntu) $ sudo apt update && sudo apt install zsh yadm 
+         (WSL Ubuntu) $ sudo apt update && sudo apt install -y zsh yadm 
          (WSL Ubuntu) $ chsh -s $(which zsh)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
 ```
