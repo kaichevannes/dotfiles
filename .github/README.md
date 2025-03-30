@@ -16,6 +16,13 @@
          (WSL Ubuntu) $ chsh -s $(which zsh)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
 ```
+## Pushing new config
+Remember to track new config files.
+```
+yadm add ~/.config/*
+yadm push
+```
+
 ## Adding LSPs
 1. Find an [LSP Implementation](https://microsoft.github.io/language-server-protocol/implementors/servers/) for the language
 2. Find a default config from [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)
