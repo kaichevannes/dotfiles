@@ -5,10 +5,11 @@
 3. Install yadm
 4. yadm clone
 - (Think about how to do auto DankMono font)
-### Post setup
-1. run `:Copilot setup` in nvim to authenticate copilot
 
 **Note: As of March 2025, wezterm nightly is required for yazi to work on WSL. This is because the Windows version uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
+  
+### Post setup
+1. run `:Copilot setup` in nvim to authenticate copilot
 
 ### Windows
 ```
