@@ -1,5 +1,8 @@
--- Enable lsps defined in nvim/lsp/
-vim.lsp.enable({ "luals", "bashls" })
+-- Setup lsps
+vim.lsp.enable({
+  "lua_ls",
+  "bashls"
+})
 
 -- Config
 vim.diagnostic.config({

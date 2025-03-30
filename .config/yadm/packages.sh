@@ -27,5 +27,5 @@ if command -v brew >/dev/null; then
   # LSPs
   brew install lua-language-server shellcheck bash-language-server
   # Extras
-  brew install yazi
+  brew install yazi dos2unix
 fi

@@ -41,3 +41,6 @@ vim.keymap.set("n", "<ledaer>,", "<cmd>lprev<CR>zz")
 
 -- Global replace word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- dos2unix in buffer
+vim.keymap.set("n", "<F9>", "mz<CMD>%!dos2unix<CR>`z")
