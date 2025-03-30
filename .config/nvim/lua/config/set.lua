@@ -28,4 +28,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+vim.o.winborder = "rounded"
+
 vim.g.mapleader = " "

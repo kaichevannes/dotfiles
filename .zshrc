@@ -54,8 +54,7 @@ bindkey '^Y' autosuggest-accept
 # <C-r> fuzzy find command history
 # <C-t> fuzzy find subdirectories
 # <A-c> cd into fuzzy find subdirectories
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source <(fzf --zsh)
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
