@@ -15,10 +15,6 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 -- Delete without copying into buffer
 vim.keymap.set("n", "<leader>d", "\"_d")
 
--- Create line and stay in normal mode
-vim.keymap.set("n", "<leader>o", "o<ESC>")
-vim.keymap.set("n", "<leader>O", "O<ESC>")
-
 -- Copy to system clipboard.
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")

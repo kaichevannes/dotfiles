@@ -17,6 +17,7 @@ fi
 nvim --headless -c "Lazy sync" -c "qa"
 
 # Set git config
+git config --global advice.addIgnoredFile false
 git config --global commit.template "$HOME"/.gitmessage
 git config --global user.name "Kai Chevannes"
 git config --global core.editor "nvim"

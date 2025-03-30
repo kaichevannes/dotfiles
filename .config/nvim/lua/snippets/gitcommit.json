@@ -1,6 +1,6 @@
 {
   "conventional commit": {
-    "prefix": "cc",
+    "prefix": "ucc",
     "body": [
       "${1:type}: ${2:title}",
       "",
@@ -8,7 +8,7 @@
     ]
   },
   "scoped conventional commit": {
-    "prefix": "scc",
+    "prefix": "cc",
     "body": [
       "${1:type}(${2:scope}): ${3:title}",
       "",
