@@ -19,10 +19,8 @@
 ## Adding LSPs
 1. Find an [LSP Implementation](https://microsoft.github.io/language-server-protocol/implementors/servers/) for the language
 2. Find a default config from [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)
-3. Add the default config to .config/nvim/lsp (remember filename)
-4. Add the config (remembered filename) to enabled lsps in the config in .config/nvim/lua/config/lsp.lua
-
-**Note: Only add LSPs for files being used, untested configs don't work.**
+3. Add the default config using require'lspconfig' to .config/nvim/lsp (remember filename)
+4. Enable the lsp (remembered filename) to enabled lsps in the config in .config/nvim/lua/config/lsp.lua
 
 ## Keybindings
 ### LSP
