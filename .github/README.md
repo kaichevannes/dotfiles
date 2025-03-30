@@ -6,7 +6,7 @@
 4. yadm clone
 - (Think about how to do auto DankMono font)
 
-**Note: As of March 2025, wezterm nightly is required for yazi to work on WSL. This is because the windows version uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
+**Note: As of March 2025, wezterm nightly is required for yazi to work on WSL. This is because the Windows version uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
 
 ### Windows
 ```
