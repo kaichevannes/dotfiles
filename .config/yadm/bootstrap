@@ -4,19 +4,20 @@
 sudo -v
 
 # Move .wezterm.lua to Windows home on wsl
-if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ]; then
+if [ "$(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip')" ]; then
   WIN_HOME="/mnt/c/Users/$(whoami)"
-  if [ -d $WIN_HOME ]; then
+  if [ -d "$WIN_HOME" ]; then
     cp "$HOME/.wezterm.lua" "$WIN_HOME/.wezterm.lua"
   fi
 fi
 
-/bin/bash $HOME/.config/yadm/packages.sh
+/bin/bash "$HOME"/.config/yadm/packages.sh
 
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
 # Set git config
+git config --global commit.template "$HOME"/.gitmessage
 git config --global user.name "Kai Chevannes"
 git config --global core.editor "nvim"
 
