@@ -22,6 +22,8 @@
 3. Add the default config to .config/nvim/lsp (remember filename)
 4. Add the config (remembered filename) to enabled lsps in the config in .config/nvim/lua/config/lsp.lua
 
+**Note: Only add LSPs for files being used, untested configs don't work.**
+
 ## Keybindings
 ### LSP
 - `i_<C-x><C-o>` `conte`**x**`tual` **o**`ptions`
