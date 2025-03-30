@@ -6,5 +6,5 @@ return {
   capabilities = capabilities,
   cmd = { "neocmakelsp", "--stdio" },
   filetypes = { "cmake" },
-  root_markers = { ".git", "build", "cmake" }
+  root_markers = { "build", "cmake", ".git" }
 }
