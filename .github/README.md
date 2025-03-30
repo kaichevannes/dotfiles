@@ -17,22 +17,25 @@
          (WSL Ubuntu) $ chsh -s $(which zsh)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
 ```
-## Pushing new config
+## Config updates
+### Pushing new config
 Remember to track new config files.
 ```
 yadm add ~/.config/*
 yadm push
 ```
-
-## Adding LSPs
+### Adding snippets
+1. Check [friendly-snippets](https://github.com/rafamadriz/friendly-snippets/tree/main/snippets) for reference implementations.
+2. Add filetype json file and reference it in `lua/snippets/package.json`.
+### Adding LSPs
 1. Find an [LSP Implementation](https://microsoft.github.io/language-server-protocol/implementors/servers/) for the language
 2. Find a default config from [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)
 3. Add the default config using require'lspconfig' to .config/nvim/lsp (remember filename)
 4. Enable the lsp (remembered filename) to enabled lsps in the config in .config/nvim/lua/config/lsp.lua
 
-## Keybindings
+### Keybindings
 Bindings here are system defaults not explicitly defined in the config.
-### LSP
+#### LSP
 - `i_<C-x><C-o>` `conte`**x**`tual` **o**`ptions`
 - `i_<C-S>     ` **s**`ignature` `help`
 - `i_C<-n>     ` **n**`ext` `suggestion`
