@@ -4,7 +4,7 @@
 2. Make sure zsh is the default shell
 3. Install yadm
 4. yadm clone
-(Think about how to do auto DankMono font)
+- (Think about how to do auto DankMono font)
 
 **Note: As of March 2025, wezterm nightly is required for yazi to work. This is because it uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
 
