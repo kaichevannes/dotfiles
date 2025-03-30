@@ -34,6 +34,7 @@ yadm push
 ### LSP
 - `i_<C-x><C-o>` `conte`**x**`tual` **o**`ptions`
 - `i_<C-S>     ` **s**`ignature` `help`
+- `i_C<-n>     ` **n**`ext` `suggestion`
 - `<C-]>       ` `go-to-definition`
 - `grn         ` **g**`lobal` **r**`e`**n**`ame`
 - `gra         ` **g**`lobal` **r**`ecommended` **a**`ctions`
