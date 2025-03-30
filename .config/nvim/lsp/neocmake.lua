@@ -4,10 +4,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
   capabilities = capabilities,
-  cmd = { "vscode-json-language-server", "--stdio" },
-  filetypes = { "json", "jsonc" },
-  init_options = {
-    provideFormatter = true,
-  },
-  root_markers = { ".git" }
+  cmd = { "neocmakelsp", "--stdio" },
+  filetypes = { "cmake" },
+  root_markers = { ".git", "build", "cmake" }
 }

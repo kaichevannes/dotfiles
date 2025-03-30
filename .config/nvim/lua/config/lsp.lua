@@ -1,13 +1,14 @@
 -- Enable lsps
--- (this is just sourcing the files I think, I could inline their contents here)
 vim.lsp.enable({
   "bashls",        -- Bash
   "clangd",        -- C/C++
   "cssls",         -- CSS/LESS/SASS
   "gopls",         -- Go
+  "dockerls",      -- Docker
   "html",          -- HTML
   "lua_ls",        -- Lua
   "marksman",      -- Markdown
+  "neocmake",      -- CMake
   "pylsp",         -- Python
   "rust_analyzer", -- Rust
   "taplo",         -- TOML
