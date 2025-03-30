@@ -31,6 +31,7 @@ yadm push
 4. Enable the lsp (remembered filename) to enabled lsps in the config in .config/nvim/lua/config/lsp.lua
 
 ## Keybindings
+Bindings here are not system defaults not explicitly defined in the config.
 ### LSP
 - `i_<C-x><C-o>` `conte`**x**`tual` **o**`ptions`
 - `i_<C-S>     ` **s**`ignature` `help`
