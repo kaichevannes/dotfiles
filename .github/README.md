@@ -5,6 +5,8 @@
 3. Install yadm
 4. yadm clone
 - (Think about how to do auto DankMono font)
+### Post setup
+1. run `:Copilot setup` in nvim to authenticate copilot
 
 **Note: As of March 2025, wezterm nightly is required for yazi to work on WSL. This is because the Windows version uses a more recent version of ConPTY which handles how terminal inputs are passed to the shell.**
 
@@ -16,6 +18,7 @@
          (WSL Ubuntu) $ sudo apt update && sudo apt install -y zsh yadm 
          (WSL Ubuntu) $ chsh -s $(which zsh)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
+             (Neovim) $ :Copilot setup
 ```
 ## Config updates
 ### Pushing new config
