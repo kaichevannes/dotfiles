@@ -1,7 +1,19 @@
--- Setup lsps
+-- Enable lsps
+-- (this is just sourcing the files I think, I could inline their contents here)
 vim.lsp.enable({
-  "lua_ls",
-  "bashls"
+  "bashls",        -- Bash
+  "clangd",        -- C/C++
+  "cssls",         -- CSS/LESS/SASS
+  "gopls",         -- Go
+  "html",          -- HTML
+  "lua_ls",        -- Lua
+  "marksman",      -- Markdown
+  "pylsp",         -- Python
+  "rust_analyzer", -- Rust
+  "taplo",         -- TOML
+  "ts_ls",         -- TypeScript/JavaScript
+  "jsonls",        -- JSON
+  "yamlls",        -- YAML
 })
 
 -- Config

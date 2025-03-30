@@ -13,12 +13,6 @@ fi
 
 /bin/bash $HOME/.config/yadm/packages.sh
 
-# Install rust
-if ! command -v cargo >/dev/null; then
-  curl https://sh.rustup.rs -sSf | sh -s -- -y
-  source "$HOME/.cargo/env"
-fi
-
 # Initialise nvim
 nvim --headless -c "Lazy sync" -c "qa"
 
