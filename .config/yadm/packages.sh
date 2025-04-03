@@ -32,9 +32,6 @@ if command -v brew >/dev/null 2>&1; then
   brew install yazi dos2unix docker
 fi
 
-# Yazi plugins
-ya pack -a yazi-rs/plugins:toggle-pane
-
 # Node specific packages
 if ! npm list -g --depth=0 | grep "@styled/typescript-styled-plugin"; then
   npm install -g @styled/typescript-styled-plugin
