@@ -39,9 +39,11 @@ yadm push
 
 ### Keybindings
 Bindings here are system defaults not explicitly defined in the config.
-#### Editors
+#### Editor
 - `[<Space>    ` add an empty line _before_ the cursor and stay in normal mode
 - `]<Space>    ` add an empty line _after_ the cursor and stay in normal mode
+#### HTML
+- `dst         ` delete a surrounding tag
 #### LSP
 - `i_<C-x><C-o>` `conte`**x**`tual` **o**`ptions`
 - `i_<C-S>     ` **s**`ignature` `help`
