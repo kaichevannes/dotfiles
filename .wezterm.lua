@@ -62,6 +62,7 @@ config.keys = {
     { key = 'PageDown', mods = 'ALT', action = act.MoveTabRelative(-1)},
     { key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain'},
     { key = 'q', mods = 'ALT', action = act.CloseCurrentTab{confirm = false}},
+    { key = 'z', mods = 'ALT', action = act.TogglePaneZoomState},
     { key = 'c', mods = 'LEADER', action = act.CloseCurrentPane{confirm = false}},
     { key = 'v', mods = 'LEADER', action = act.SplitHorizontal{domain = 'CurrentPaneDomain'}},
     { key = 's', mods = 'LEADER', action = act.SplitVertical{domain = 'CurrentPaneDomain'}},
