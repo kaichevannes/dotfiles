@@ -38,6 +38,7 @@ config.font_size = 14.0
 
 -- keybindings
 config.disable_default_key_bindings = true
+config.adjust_window_size_when_changing_font_size = false
 local act = wezterm.action
 config.leader = {key='w', mods='ALT', timeout_milliseconds=1000}
 
@@ -48,6 +49,9 @@ config.keys = {
     { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
     { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1)},
     { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1)},
+    { key = '-', mods = 'ALT', action = act.DecreaseFontSize},
+    { key = '=', mods = 'ALT', action = act.IncreaseFontSize},
+    { key = '0', mods = 'ALT', action = act.ResetFontSize},
     { key = 'r', mods = 'ALT', action = act.ReloadConfiguration},
     { key = '1', mods = 'ALT', action = act.ActivateTab(0)},
     { key = '2', mods = 'ALT', action = act.ActivateTab(1)},
