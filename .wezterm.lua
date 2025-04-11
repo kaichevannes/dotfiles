@@ -2,10 +2,21 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+
 -- This is where you actually apply your config choices
 -- shell
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_domain = 'WSL:Ubuntu'
+
+    local launch_menu = {}
+
+    table.insert(launch_menu, {
+        label = 'PowerShell',
+        args = { 'powershell.exe', '-NoLogo' },
+        domain = { DomainName = 'local' },
+    })
+
+    config.launch_menu = launch_menu
 end
  
 -- beeps
@@ -34,6 +45,7 @@ config.keys = {
     { key = 'v', mods = 'SHIFT | CTRL', action = act.PasteFrom 'Clipboard'},
     { key = 'c', mods = 'SHIFT | CTRL', action = act.CopyTo 'Clipboard'},
     { key = 'f', mods = 'ALT', action = act.ToggleFullScreen},
+    { key = 'l', mods = 'ALT', action = wezterm.action.ShowLauncher },
     { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1)},
     { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1)},
     { key = 'r', mods = 'ALT', action = act.ReloadConfiguration},
