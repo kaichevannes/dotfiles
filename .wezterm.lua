@@ -58,6 +58,8 @@ config.keys = {
     { key = '7', mods = 'ALT', action = act.ActivateTab(6)},
     { key = '8', mods = 'ALT', action = act.ActivateTab(7)}, 
     { key = '9', mods = 'ALT', action = act.ActivateTab(8)},
+    { key = 'PageUp', mods = 'ALT', action = act.MoveTabRelative(1)},
+    { key = 'PageDown', mods = 'ALT', action = act.MoveTabRelative(-1)},
     { key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain'},
     { key = 'q', mods = 'ALT', action = act.CloseCurrentTab{confirm = false}},
     { key = 'c', mods = 'LEADER', action = act.CloseCurrentPane{confirm = false}},
@@ -68,7 +70,6 @@ config.keys = {
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up'},
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right'},
 }
-
 
 -- and finally, return the configuration to wezterm
 return config
