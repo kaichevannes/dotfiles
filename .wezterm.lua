@@ -23,14 +23,20 @@ config.color_scheme = 'Catppuccin Mocha'
 
 -- font
 config.font = wezterm.font "Dank Mono"
-config.font_size = 14.0;
+config.font_size = 14.0
 
 -- keybindings
--- config.disable_default_key_bindings = true
+config.disable_default_key_bindings = true
 local act = wezterm.action
 config.leader = {key='w', mods='ALT', timeout_milliseconds=1000}
 
 config.keys = {
+    { key = 'v', mods = 'SHIFT | CTRL', action = act.PasteFrom 'Clipboard'},
+    { key = 'c', mods = 'SHIFT | CTRL', action = act.CopyTo 'Clipboard'},
+    { key = 'f', mods = 'ALT', action = act.ToggleFullScreen},
+    { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1)},
+    { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1)},
+    { key = 'r', mods = 'ALT', action = act.ReloadConfiguration},
     { key = '1', mods = 'ALT', action = act.ActivateTab(0)},
     { key = '2', mods = 'ALT', action = act.ActivateTab(1)},
     { key = '3', mods = 'ALT', action = act.ActivateTab(2)},
@@ -43,7 +49,6 @@ config.keys = {
     { key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain'},
     { key = 'q', mods = 'ALT', action = act.CloseCurrentTab{confirm = false}},
     { key = 'c', mods = 'LEADER', action = act.CloseCurrentPane{confirm = false}},
-    { key = 't', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain'},
     { key = 'v', mods = 'LEADER', action = act.SplitHorizontal{domain = 'CurrentPaneDomain'}},
     { key = 's', mods = 'LEADER', action = act.SplitVertical{domain = 'CurrentPaneDomain'}},
     { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left'},
