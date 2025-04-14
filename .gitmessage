@@ -1,0 +1,15 @@
+
+###############################################################################
+# feat     # a new feature                                                    #
+# fix      # a bug fix                                                        #
+# test     # adding tests or correcting existing tests                        #
+# refactor # a code change that neither fixes a bug nor adds a feature        #
+# docs     # documentation only changes                                       #
+# build    # changes that affect the build system or external dependencies    #
+# ci       # changes to CI configuration files and scripts                    #
+# perf     # improve performance                                              #
+# style    # formatting                                                       #
+# chore    # catch all if it doesn't fit into the above                       #
+###############################################################################
+# BREAK    # a breaking change (body message)                                 #
+###############################################################################
