@@ -15,6 +15,7 @@
 ```
 (Elevated Powershell) $ winget install wez.wezterm 
 (Elevated Powershell) $ wsl.exe --install
+(Elevated Powershell) $ wsl.exe -d Ubuntu
          (WSL Ubuntu) $ cd ~
          (WSL Ubuntu) $ sudo apt update && sudo apt install -y zsh yadm 
          (WSL Ubuntu) $ chsh -s $(which zsh)
