@@ -15,15 +15,6 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 -- Delete without copying into buffer
 vim.keymap.set("n", "<leader>d", "\"_d")
 
--- Copy to system clipboard.
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-
--- Paste from system clipboard.
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>P", "\"+P")
-
 -- Avoid accidentally entering Ex mode.
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -37,4 +28,4 @@ vim.keymap.set("n", "<ledaer>,", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- dos2unix in buffer
-vim.keymap.set("n", "<F9>", "mz<CMD>%!dos2unix<CR>`z")
+vim.keymap.set("n", "<F8>", "mz<CMD>%!dos2unix<CR>`z")
