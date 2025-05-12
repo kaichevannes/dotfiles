@@ -21,7 +21,7 @@ fi
 if command -v brew >/dev/null 2>&1; then
   brew update
   # Basics
-  brew install gcc fzf xclip
+  brew install gcc fzf
   # Neovim
   brew install neovim ripgrep tree-sitter node npm luarocks
 fi
