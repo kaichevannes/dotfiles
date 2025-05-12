@@ -27,6 +27,7 @@
 Remember to track new config files.
 ```
 yadm add ~/.config/*
+yadm commit
 yadm push
 ```
 ### Adding snippets
