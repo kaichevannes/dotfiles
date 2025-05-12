@@ -22,6 +22,8 @@
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
              (Neovim) $ :Copilot setup
 ```
+
+**Note: to do a fresh install `wsl --unregister Ubuntu`**
 ## Config updates
 ### Pushing new config
 Remember to track new config files.
