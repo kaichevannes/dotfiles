@@ -1,5 +1,26 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.g.have_nerd_font = true
+
+vim.opt.showmode = false
+
+-- When a long line wraps on the screen, show it properly indented.
+vim.opt.breakindent = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+vim.opt.mouse = ''
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Preview substitutions while typing
+vim.opt.inccommand = 'split'
+
+-- Show confirm prompt when quitting without saving
+vim.opt.confirm = true
 
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -20,12 +41,14 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 300
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
+-- Auto-wrap comments at 80 chars
+vim.opt.textwidth = 80
