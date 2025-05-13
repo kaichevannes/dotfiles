@@ -1,7 +1,7 @@
 ## Setup
 ### Basic Flow
 1. Install wezterm
-2. Make sure zsh is the default shell
+2. Make sure fish is the default shell
 3. Install yadm
 4. yadm clone
 - (Think about how to do auto DankMono font)
@@ -17,8 +17,8 @@
 (Elevated Powershell) $ wsl.exe --install
 (Elevated Powershell) $ wsl.exe -d Ubuntu
          (WSL Ubuntu) $ cd ~
-         (WSL Ubuntu) $ sudo apt update && sudo apt install -y zsh yadm xclip
-         (WSL Ubuntu) $ chsh -s $(which zsh)
+         (WSL Ubuntu) $ sudo apt update && sudo apt install -y fish yadm xclip
+         (WSL Ubuntu) $ chsh -s $(which fish)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
              (Neovim) $ :Copilot setup
 ```
