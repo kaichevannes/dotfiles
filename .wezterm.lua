@@ -28,8 +28,8 @@ config.use_fancy_tab_bar = false
 
 -- colors
 -- config.color_scheme = 'Catppuccin Mocha'
--- config.color_scheme = 'Kanagawa Dragon (Gogh)'
-config.color_scheme = "SleepyHollow"
+config.color_scheme = 'Kanagawa Dragon (Gogh)'
+-- config.color_scheme = "SleepyHollow"
 
 -- font
 config.font = wezterm.font "Dank Mono"
