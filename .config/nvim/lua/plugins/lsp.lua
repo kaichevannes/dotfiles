@@ -41,9 +41,11 @@ return {
 				end,
 			})
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities({
+				textDocument = { completion = { completionItem = { snippetSupport = false } } },
+			})
 
-			-- Servers to always install, or custom configuration
+			-- Servers to install
 			local servers = {
 				lua_ls = {
 					-- cmd = { ... },
@@ -58,6 +60,20 @@ return {
 						},
 					},
 				},
+				bashls = {},
+				clangd = {},
+				cssls = {},
+				dockerls = {},
+				html = {},
+				jsonls = {},
+				marksman = {},
+				pylsp = {},
+				rust_analyzer = {},
+				taplo = {},
+				ts_ls = {},
+				yamlls = {},
+				-- gopls = {},
+				-- neocmake = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
