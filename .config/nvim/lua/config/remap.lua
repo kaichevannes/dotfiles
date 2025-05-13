@@ -1,7 +1,3 @@
--- Move visually selected lines of text.
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- Centre screen after motion.
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -28,4 +24,8 @@ vim.keymap.set("n", "<F8>", "mz<CMD>%!dos2unix<CR>`z")
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { silent = true })
 
 -- Add to quickfix list
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Unbind leader and s
+vim.keymap.set("n", "<Space>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "s", "<Nop>", { noremap = true, silent = true })

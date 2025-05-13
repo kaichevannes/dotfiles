@@ -14,7 +14,7 @@ fi
 /bin/bash "$HOME"/.config/yadm/packages.sh
 
 # Initialise nvim
-nvim --headless -c "Lazy sync"
+nvim --headless -c "Lazy sync" -c "qa"
 
 # Set git config
 git config --global advice.addIgnoredFile false
