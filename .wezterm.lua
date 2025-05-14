@@ -2,7 +2,6 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-
 -- This is where you actually apply your config choices
 -- shell
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
@@ -18,6 +17,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 
     config.launch_menu = launch_menu
 end
+
+config.window_close_confirmation = 'NeverPrompt'
  
 -- beeps
 config.audible_bell = "Disabled"
@@ -61,6 +62,7 @@ config.keys = {
     { key = '7', mods = 'ALT', action = act.ActivateTab(6)},
     { key = '8', mods = 'ALT', action = act.ActivateTab(7)}, 
     { key = '9', mods = 'ALT', action = act.ActivateTab(8)},
+    { key = '6', mods = 'ALT|SHIFT', action = act.ActivateLastTab},
     { key = 'PageUp', mods = 'ALT', action = act.MoveTabRelative(1)},
     { key = 'PageDown', mods = 'ALT', action = act.MoveTabRelative(-1)},
     { key = 't', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain'},
