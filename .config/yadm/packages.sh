@@ -21,7 +21,7 @@ fi
 if command -v brew >/dev/null 2>&1; then
   brew update
   # Basics
-  brew install gcc fzf
+  brew install gcc fzf keychain
   # Prompt
   brew install starship
   # Neovim

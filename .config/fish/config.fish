@@ -11,6 +11,9 @@ if status is-interactive
   set -x VISUAL nvim
   set -x EDITOR nvim
 
+  # Start ssh agent
+  keychain --quiet --eval id_ed25519 | source
+
   starship init fish | source
   enable_transience
 end
