@@ -24,16 +24,16 @@ return {
 		{
 			"<F4>",
 			function()
-				require("dap").step_into()
+				require("dap").step_out()
 			end,
-			desc = "Debug: Step Into",
+			desc = "Debug: Step Over",
 		},
 		{
 			"<F7>",
 			function()
-				require("dap").step_out()
+				require("dap").step_into()
 			end,
-			desc = "Debug: Step Over",
+			desc = "Debug: Step Into",
 		},
 		{
 			"<F8>",
