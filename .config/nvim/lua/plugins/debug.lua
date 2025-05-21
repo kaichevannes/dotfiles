@@ -65,7 +65,7 @@ return {
 			desc = "Debug: See last session result.",
 		},
 		{
-			"<leader>=",
+			"g=",
 			function()
 				require("dapui").eval(nil, { enter = true })
 			end,
