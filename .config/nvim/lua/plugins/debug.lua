@@ -16,27 +16,27 @@ return {
 			desc = "Debug: Start/Continue",
 		},
 		{
-			"<F1>",
+			"<F3>",
 			function()
 				require("dap").step_back()
 			end,
 		},
 		{
-			"<F2>",
+			"<F4>",
 			function()
 				require("dap").step_into()
 			end,
 			desc = "Debug: Step Into",
 		},
 		{
-			"<F3>",
+			"<F7>",
 			function()
 				require("dap").step_out()
 			end,
 			desc = "Debug: Step Over",
 		},
 		{
-			"<F4>",
+			"<F8>",
 			function()
 				require("dap").step_over()
 			end,
@@ -64,9 +64,16 @@ return {
 			end,
 			desc = "Debug: See last session result.",
 		},
+		{
+			"<leader>=",
+			function()
+				require("dapui").eval(nil, { enter = true })
+			end,
+			desc = "Evaluate under cursor",
+		},
 	},
 	config = function()
-		-- require("nvim-dap-virtual-text").setup({})
+		require("nvim-dap-virtual-text").setup()
 		local dap = require("dap")
 		local dapui = require("dapui")
 
@@ -82,14 +89,15 @@ return {
 			ensure_installed = { "js" },
 		})
 
-		require("dapui").setup()
+		dapui.setup()
 
-		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+		-- dap.listeners.before.attach["dapui_config"] = dapui.open
+		-- dap.listeners.before.launch["dapui_config"] = dapui.open
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
 		-- Javascript / Typescript
-		-- For full config see: https://github.com/ecosse3/nvim/blob/dev/lua/plugins/dap.lua
+		-- Example: https://github.com/ecosse3/nvim/blob/13f1d35ca2fe326f3f4cdd516ae577eb1cef0921/lua/plugins/dap.lua
 		dap.adapters["pwa-node"] = {
 			type = "server",
 			host = "localhost",

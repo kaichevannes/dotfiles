@@ -25,19 +25,20 @@ return {
 						mode = mode or "n"
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					map("<leader>ra", vim.lsp.buf.code_action, "[R]ecommended [A]ction", { "n", "x" })
-					map("<leader>rs", require("telescope.builtin").lsp_references, "[R]eference[S]")
-					map("<leader>ri", require("telescope.builtin").lsp_implementations, "[L]SP [I]mplementation")
-					map("<leader>d", require("telescope.builtin").lsp_definitions, "[L]sp [d]efinition")
-					map("<leader>D", vim.lsp.buf.declaration, "[L]sp [D]eclaration")
+					map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("gra", vim.lsp.buf.code_action, "[R]ecommended [A]ction", { "n", "x" })
+					map("grs", require("telescope.builtin").lsp_references, "[R]eference[S]")
+					map("gri", require("telescope.builtin").lsp_implementations, "[R]eference [I]mplementation")
+					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [d]efinition")
+					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
 					map("<leader>ls", require("telescope.builtin").lsp_document_symbols, "[L]ist [s]ymbols")
 					map(
 						"<leader>lS",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[L]ist all [S]ymbols"
 					)
-					map("<leader>td", require("telescope.builtin").lsp_type_definitions, "[L]SP [T]ype [D]efinition")
+					map("<leader>td", require("telescope.builtin").lsp_type_definitions, "[T]ype [D]efinition")
 				end,
 			})
 
