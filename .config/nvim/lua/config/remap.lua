@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>,", "<cmd>lprev<CR>zz")
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- dos2unix in buffer
-vim.keymap.set("n", "<F8>", "mz<CMD>%!dos2unix<CR>`z")
+vim.keymap.set("n", "<F9>", "mz<CMD>%!dos2unix<CR>`z")
 
 -- Show full LSP error message
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { silent = true })

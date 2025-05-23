@@ -3,6 +3,8 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
+vim.opt.title = true
+
 -- When a long line wraps on the screen, show it properly indented.
 vim.opt.breakindent = true
 

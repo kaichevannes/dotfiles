@@ -12,7 +12,12 @@ if status is-interactive
   set -x EDITOR nvim
 
   # Start ssh agent
-  keychain --quiet --eval id_ed25519 | source
+  # keychain --quiet --eval id_ed25519 | source
+  # Only start ssh-agent if not already running
+  if not set -q SSH_AUTH_SOCK
+      eval (ssh-agent -c) > /dev/null
+      ssh-add -q ~/.ssh/id_ed25519
+  end
 
   starship init fish | source
   enable_transience
