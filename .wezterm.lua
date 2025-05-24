@@ -35,7 +35,7 @@ if file then
 	config.color_scheme = file:read("*a")
 	file:close()
 else
-	config.color_scheme = "Cattppucin"
+	config.color_scheme = "SleepyHollow"
 end
 
 config.automatically_reload_config = true
