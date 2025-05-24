@@ -9,15 +9,6 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 	},
 	config = function()
-		require("nvim-dap-virtual-text").setup({
-			-- display_callback = function(variable)
-			-- 	if #variable.value > 15 then
-			-- 		return " " .. variable.value:sub(1, 15) .. "..."
-			-- 	end
-			-- 	return " " .. variable.value
-			-- end,
-		})
-
 		require("mason-nvim-dap").setup({
 			-- Makes a best effort to setup the various debuggers with
 			-- reasonable debug configurations
@@ -27,10 +18,75 @@ return {
 			-- see mason-nvim-dap README for more information
 			handlers = {},
 
-			ensure_installed = { "js" },
+			ensure_installed = {
+				"js", -- Javascript/Typescript
+				"codelldb", -- C/C++/Rust
+			},
 		})
 
 		local dap = require("dap")
+
+		-- Javascript / Typescript
+		-- Example: https://github.com/ecosse3/nvim/blob/13f1d35ca2fe326f3f4cdd516ae577eb1cef0921/lua/plugins/dap.lua
+		dap.adapters["pwa-node"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = "node",
+				args = {
+					vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+					"${port}",
+				},
+			},
+		}
+
+		dap.configurations.typescript = {
+			{
+				type = "pwa-node",
+				request = "launch",
+				name = "Launch Test Current File (pwa-node with jest)",
+				cwd = vim.fn.getcwd(),
+				runtimeArgs = { "${workspaceFolder}/node_modules/.bin/jest" },
+				runtimeExecutable = "node",
+				args = { "${file}", "--coverage", "false" },
+				rootPath = "${workspaceFolder}",
+				sourceMaps = true,
+				console = "integratedTerminal",
+				internalConsoleOptions = "neverOpen",
+				skipFiles = { "<node_internals>/**", "node_modules/**" },
+			},
+		}
+
+		-- Rust
+		dap.adapters.codelldb = {
+			type = "executable",
+			-- maybe packages?
+			command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+		}
+
+		dap.configurations.rust = {
+			{
+				name = "Launch file",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+			},
+		}
+
+		-- --------------------UI----------------------------
+		require("nvim-dap-virtual-text").setup({
+			-- display_callback = function(variable)
+			-- 	if #variable.value > 15 then
+			-- 		return " " .. variable.value:sub(1, 15) .. "..."
+			-- 	end
+			-- 	return " " .. variable.value
+			-- end,
+		})
 
 		-- local dapui = require("dapui")
 		--
@@ -87,38 +143,7 @@ return {
 		-- dap.listeners.before.event_terminated["dap-view-config"] = dapview.close
 		-- dap.listeners.before.event_exited["dap-view-config"] = dapview.close
 
-		-- Javascript / Typescript
-		-- Example: https://github.com/ecosse3/nvim/blob/13f1d35ca2fe326f3f4cdd516ae577eb1cef0921/lua/plugins/dap.lua
-		dap.adapters["pwa-node"] = {
-			type = "server",
-			host = "localhost",
-			port = "${port}",
-			executable = {
-				command = "node",
-				args = {
-					vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
-					"${port}",
-				},
-			},
-		}
-
-		dap.configurations.typescript = {
-			{
-				type = "pwa-node",
-				request = "launch",
-				name = "Launch Test Current File (pwa-node with jest)",
-				cwd = vim.fn.getcwd(),
-				runtimeArgs = { "${workspaceFolder}/node_modules/.bin/jest" },
-				runtimeExecutable = "node",
-				args = { "${file}", "--coverage", "false" },
-				rootPath = "${workspaceFolder}",
-				sourceMaps = true,
-				console = "integratedTerminal",
-				internalConsoleOptions = "neverOpen",
-				skipFiles = { "<node_internals>/**", "node_modules/**" },
-			},
-		}
-
+		-- -------------------------Keybindings--------------------------------
 		vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
 		vim.keymap.set("n", "<F6>", function()
 			dapview.toggle(true)
