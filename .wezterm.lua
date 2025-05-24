@@ -27,10 +27,19 @@ config.audible_bell = "Disabled"
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
--- colors
--- config.color_scheme = 'Catppuccin Mocha'
-config.color_scheme = 'Kanagawa Dragon (Gogh)'
--- config.color_scheme = "SleepyHollow"
+-- Colorscheme 
+local path = wezterm.config_dir .. "/.colorscheme"
+
+local file = io.open(path, "r")
+if file then
+	config.color_scheme = file:read("*a")
+	file:close()
+else
+	config.color_scheme = "Cattppucin"
+end
+
+config.automatically_reload_config = true
+wezterm.add_to_config_reload_watch_list(path)
 
 -- font
 config.font = wezterm.font "Dank Mono"
