@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		local colorschemes = {
 			["catppuccin"] = "Catppuccin Mocha",
 			["kanagawa-dragon"] = "Kanagawa Dragon (Gogh)",
-			["kanagawa"] = "Kanagawa",
+			["kanagawa"] = "Kanagawa Dragon (Gogh)",
 			["gruvbox-material"] = "SleepyHollow",
 		}
 		local colorscheme = colorschemes[args.match]
