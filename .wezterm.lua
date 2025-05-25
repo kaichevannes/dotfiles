@@ -43,7 +43,7 @@ wezterm.add_to_config_reload_watch_list(path)
 
 -- font
 config.font = wezterm.font "Dank Mono"
-config.font_size = 14.0
+config.font_size = 19.0 -- change so nvim screen width is just over 80 chars
 
 -- keybindings
 config.disable_default_key_bindings = true
