@@ -17,7 +17,7 @@
 (Elevated Powershell) $ wsl.exe --install
 (Elevated Powershell) $ wsl.exe -d Ubuntu
          (WSL Ubuntu) $ cd ~
-         (WSL Ubuntu) $ sudo apt update && sudo apt install -y fish yadm xclip
+         (WSL Ubuntu) $ sudo apt update && sudo apt install -y fish yadm xclip dos2unix
          (WSL Ubuntu) $ chsh -s $(which fish)
          (WSL Ubuntu) $ yadm clone https://github.com/kaichevannes/dotfiles.git
              (Neovim) $ :Copilot setup
