@@ -18,12 +18,6 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
-			-- Diagnostic info points towards error
-			vim.diagnostic.config({
-				virtual_text = false,
-				virtual_lines = true,
-			})
-
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 				callback = function(event)
@@ -45,6 +39,22 @@ return {
 						"[L]ist all [S]ymbols"
 					)
 					map("<leader>td", require("telescope.builtin").lsp_type_definitions, "[T]ype [D]efinition")
+
+					-- Diagnostic info points towards error
+					vim.diagnostic.config({
+						virtual_text = false,
+						virtual_lines = false,
+					})
+					local virtual_lines_enabled = false
+
+					function ToggleVirtualLines()
+						virtual_lines_enabled = not virtual_lines_enabled
+						vim.diagnostic.config({
+							virtual_lines = virtual_lines_enabled,
+						})
+					end
+
+					map("gdi", ToggleVirtualLines, "[D]ebug [I]nfo")
 				end,
 			})
 
