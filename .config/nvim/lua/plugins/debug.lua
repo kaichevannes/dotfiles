@@ -59,24 +59,7 @@ return {
 		}
 
 		-- Rust
-		dap.adapters.codelldb = {
-			type = "executable",
-			-- maybe packages?
-			command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
-		}
-
-		dap.configurations.rust = {
-			{
-				name = "Launch file",
-				type = "codelldb",
-				request = "launch",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				cwd = "${workspaceFolder}",
-				stopOnEntry = false,
-			},
-		}
+		-- codelldb is automatically detected and configured by rustaceanvim
 
 		-- --------------------UI----------------------------
 		require("nvim-dap-virtual-text").setup({

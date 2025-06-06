@@ -10,6 +10,12 @@ return {
 		},
 	},
 	{
+		-- Better rust LSP
+		"mrcjkb/rustaceanvim",
+		version = "^6", -- Recommended
+		lazy = false, -- This plugin is already lazy
+	},
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -85,8 +91,8 @@ return {
 				jsonls = {},
 				marksman = {},
 				pylsp = {},
-				rust_analyzer = {},
 				taplo = {},
+				rust_analyzer = {},
 				ts_ls = {},
 				yamlls = {},
 				-- gopls = {},
@@ -103,7 +109,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
-				automatic_enable = true,
+				automatic_enable = {
+					exclude = { "rust_analyzer" },
+				},
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
