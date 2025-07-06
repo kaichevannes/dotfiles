@@ -89,7 +89,7 @@ return {
 				dockerls = {},
 				html = {},
 				jsonls = {},
-				marksman = {},
+				-- marksman = {},
 				pylsp = {},
 				taplo = {},
 				rust_analyzer = {},

@@ -26,6 +26,8 @@ if command -v brew >/dev/null 2>&1; then
   brew install starship
   # Neovim
   brew install neovim ripgrep tree-sitter node npm luarocks
+  # Notes
+  brew install zk
 fi
 
 # Install rust
@@ -33,3 +35,6 @@ if ! command -v cargo >/dev/null 2>&1; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   source "$HOME/.cargo/env"
 fi
+
+# Clippy
+rustup component add clippy

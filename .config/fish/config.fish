@@ -26,3 +26,6 @@ end
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# zettel
+set -x ZK_NOTEBOOK_DIR ~/zettel
