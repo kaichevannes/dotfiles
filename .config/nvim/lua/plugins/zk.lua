@@ -58,7 +58,7 @@ return {
 		vim.keymap.set(
 			"x",
 			"<leader>zi",
-			"<CMD>'<,'>ZkInsertLinkAtSelection<CR>",
+			":'<,'>ZkInsertLinkAtSelection<CR>",
 			{ desc = "[Z]ettel [I]nsert (Link)", noremap = true, silent = false }
 		)
 	end,
