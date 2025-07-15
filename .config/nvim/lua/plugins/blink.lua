@@ -54,5 +54,6 @@ return {
 		vim.keymap.set("i", "<C-s>e", blink.select_and_accept)
 		vim.keymap.set("i", "<C-s>;", blink.snippet_forward)
 		vim.keymap.set("i", "<C-s>,", blink.snippet_backward)
+		vim.keymap.set("i", "<C-e>", blink.show, { desc = "Blink Expand" })
 	end,
 }
