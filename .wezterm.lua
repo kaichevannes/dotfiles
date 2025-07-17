@@ -84,6 +84,7 @@ config.keys = {
     { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down'},
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up'},
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right'},
+    { key = ";", mods = "CTRL", action = wezterm.action.SendString("\x1b[27;5;59~")},
 }
 
 -- and finally, return the configuration to wezterm
