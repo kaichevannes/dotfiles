@@ -43,7 +43,7 @@ wezterm.add_to_config_reload_watch_list(path)
 
 -- font
 config.font = wezterm.font "Dank Mono"
-config.font_size = 22.0
+config.font_size = 24.0
 
 -- keybindings
 config.disable_default_key_bindings = true
