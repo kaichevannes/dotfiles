@@ -49,6 +49,4 @@ vim.opt.updatetime = 50
 vim.opt.timeoutlen = 300
 
 vim.opt.colorcolumn = "100"
-
--- Auto-wrap comments at 80 chars
 vim.opt.textwidth = 100
