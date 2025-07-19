@@ -2,7 +2,10 @@ vim.cmd("iabbrev -- —")
 vim.cmd("iabbrev —- –")
 
 if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
-	vim.cmd("call pencil#init({'wrap': 'hard'})")
+	if not vim.b.pencil_initialized then
+		vim.cmd("call pencil#init({'wrap': 'hard'})")
+		vim.b.pencil_initialized = true
+	end
 
 	vim.keymap.set(
 		"n",
