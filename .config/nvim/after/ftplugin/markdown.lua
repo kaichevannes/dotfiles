@@ -2,7 +2,16 @@ vim.cmd("iabbrev -- —")
 vim.cmd("iabbrev —- –")
 
 if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
-	vim.bo.formatoptions = "tlqjnca"
+	vim.keymap.set("n", "<F10>", function()
+		local fo = vim.bo.formatoptions
+		if fo:find("a") then
+			vim.bo.formatoptions = fo:gsub("a", "")
+			print("formatoptions: removed 'a'")
+		else
+			vim.bo.formatoptions = fo .. "a"
+			print("formatoptions: added 'a'")
+		end
+	end)
 
 	vim.keymap.set(
 		"n",
