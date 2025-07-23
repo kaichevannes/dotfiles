@@ -6,7 +6,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "\\y", '"+y')
-vim.keymap.set("v", "\\y", '"+y')
+vim.keymap.set("x", "\\y", '"+y')
 vim.keymap.set("n", "\\p", '"+p')
 vim.keymap.set("x", "\\p", '"+p')
 

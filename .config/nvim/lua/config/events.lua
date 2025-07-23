@@ -1,4 +1,4 @@
--- Add groups to autocommands so they are only created once.
+-- Note: Add groups to autocommands so they are only created once.
 
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Disable newline comments in normal mode",
