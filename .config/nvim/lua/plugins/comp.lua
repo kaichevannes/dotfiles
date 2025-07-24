@@ -2,6 +2,7 @@ return {
 	"saghen/blink.cmp",
 	version = "1.*",
 	dependencies = { "folke/lazydev.nvim" },
+	commit = "022521a8910a5543b0251b21c9e1a1e989745796",
 	config = function()
 		require("blink.cmp").setup({
 			-- C-space: Open menu or open docs if already open
