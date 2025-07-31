@@ -37,14 +37,14 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
 	)
 
 	vim.keymap.set(
-		"v",
-		"<leader>zc",
+		"x",
+		"<leader>zn",
 		":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>",
 		{ desc = "[Z]ettel from [C]ontent", noremap = true, silent = false }
 	)
 
 	vim.keymap.set(
-		"v",
+		"x",
 		"<leader>zm",
 		":'<,'>ZkMatch { sort = { 'created' }}<CR>",
 		{ desc = "[Z]ettel [M]atch", noremap = true, silent = false }
