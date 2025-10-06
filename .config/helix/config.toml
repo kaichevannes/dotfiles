@@ -5,6 +5,7 @@ true-color = true
 mouse = false
 line-number = "relative"
 auto-pairs = false
+rulers = [80]
 
 [keys.normal]
 C-g = [
@@ -22,3 +23,6 @@ e = [
   ":open %sh{cat /tmp/unique-file-h21a434}",
   ":redraw"
 ]
+
+[keys.normal.g]
+q = ":reflow"
