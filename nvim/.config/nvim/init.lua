@@ -55,6 +55,8 @@ require("telescope").setup({})
 require("telescope").load_extension "fzf"
 require("yazi").setup({
   open_for_directories = true,
+  floating_window_scaling_factor = 1,
+  yazi_floating_window_border = "none",
 })
 vim.g.loaded_netrwPlugin = 1
 require("gitsigns").setup({
@@ -74,15 +76,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.g.gruvbox_material_palette = "mix"
+vim.g.gruvbox_material_foreground = "mix"
+vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_transparent_background = 1
-vim.api.nvim_create_autocmd("ColorScheme", {
-  desc = "fix yazi popup border color",
-  callback = function()
-    local fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = fg })
-  end,
-})
 vim.cmd.colorscheme("gruvbox-material")
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
