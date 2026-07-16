@@ -1,5 +1,0 @@
-require("config.set")
-require("config.remap")
-require("config.events")
-require("config.lazy")
-require("config.colorscheme")
