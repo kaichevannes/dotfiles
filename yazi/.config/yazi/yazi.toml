@@ -1,6 +1,0 @@
-[plugin]
-prepend_previewers = [
-  { mime = "text/*", run = "nvimpager" },
-	{ mime = "application/{json,javascript,x-wine-extension-ini}", run = "nvimpager" },
-	{ url = "*.{rs,go,py,lua,ts,tsx,jsx,c,h,cpp,md,toml,yaml,yml}", run = "nvimpager" },
-]

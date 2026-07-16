@@ -14,7 +14,6 @@ brew "kubectx"
 brew "helm"
 
 brew "neovim"
-brew "nvimpager"
 brew "tree-sitter"
 brew "tree-sitter-cli"
 brew "yaml-language-server"
