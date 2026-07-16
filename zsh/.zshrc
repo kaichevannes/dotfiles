@@ -121,8 +121,9 @@ alias kg='kubectl get'
 alias ke='kubectl edit'
 alias kns='kubens'
 alias kctx='kubectx'
-alias vim=nvim
-alias lg=lazygit
+alias vim='nvim'
+alias lg='lazygit'
+alias v='vim .'
 
 export EDITOR=nvim
 export VISUAL=nvim
