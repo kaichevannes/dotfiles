@@ -1,5 +1,5 @@
-local servers = { "lua_ls", "yamlls", "terraformls"}
-local parsers = { "lua", "yaml", "terraform"}
+local servers = { "lua_ls", "yamlls", "terraformls" }
+local parsers = { "lua", "yaml", "terraform" }
 
 vim.g.mapleader = " "
 vim.o.number = true
@@ -18,12 +18,12 @@ vim.o.updatetime = 250
 vim.o.termguicolors = true
 
 vim.api.nvim_create_autocmd('PackChanged', {
-	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
-			vim.system({ 'make' }, { cwd = ev.data.path })
-		end
-	end,
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
+      vim.system({ 'make' }, { cwd = ev.data.path })
+    end
+  end,
 })
 
 vim.pack.add({
@@ -87,6 +87,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:append("r")
+    vim.opt_local.formatoptions:remove("o")
   end,
 })
 
