@@ -1,5 +1,5 @@
-local servers = { "lua_ls", "yamlls" }
-local parsers = { "lua", "yaml" }
+local servers = { "lua_ls", "yamlls", "terraformls"}
+local parsers = { "lua", "yaml", "terraform"}
 
 vim.g.mapleader = " "
 vim.o.number = true
@@ -67,11 +67,25 @@ require("gitsigns").setup({
     map("n", "[c", function() gs.nav_hunk("prev") end)
   end,
 })
+
+local fmt_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if not client then return end
+
     if client and client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+    end
+    if client:supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = fmt_group, buffer = ev.buf })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = fmt_group,
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, async = false })
+        end,
+      })
     end
   end,
 })
