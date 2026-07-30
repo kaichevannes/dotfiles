@@ -3,6 +3,7 @@ tap "hashicorp/tap"
 
 brew "ripgrep"
 brew "fzf"
+brew "eza"
 brew "zoxide"
 brew "tmux"
 brew "yazi"

@@ -130,6 +130,7 @@ alias kctx='kubectx'
 alias vim='nvim'
 alias lg='lazygit'
 alias v='vim .'
+alias ls="eza"
 
 export EDITOR=nvim
 export VISUAL=nvim
