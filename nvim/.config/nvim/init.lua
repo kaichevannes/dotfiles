@@ -102,6 +102,10 @@ vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_transparent_background = 1
 vim.cmd.colorscheme("gruvbox-material")
 
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P')
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
