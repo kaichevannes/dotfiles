@@ -35,6 +35,7 @@ vim.pack.add({
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
   "https://github.com/mikavilpas/yazi.nvim",
+  "https://github.com/kdheepak/lazygit.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/tpope/vim-surround",
   "https://github.com/tpope/vim-repeat"
@@ -67,6 +68,10 @@ require("gitsigns").setup({
     map("n", "[c", function() gs.nav_hunk("prev") end)
   end,
 })
+vim.g.lazygit_floating_window_scaling_factor = 1
+vim.g.lazygit_floating_window_border_chars = { "", "", "", "", "", "", "", "" }
+vim.g.lazygit_floating_window_use_plenary = 0
+vim.g.lazygit_use_neovim_remote = 0
 
 local fmt_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -109,3 +114,4 @@ vim.keymap.set({ "n", "v" }, "<leader>P", '"+P')
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
+vim.keymap.set("n", "<C-g>", "<cmd>LazyGit<cr>")
