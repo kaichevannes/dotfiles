@@ -30,6 +30,7 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/nvim-treesitter/nvim-treesitter-context",
   "https://github.com/sainnhe/gruvbox-material",
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
@@ -47,10 +48,23 @@ vim.diagnostic.config({ virtual_text = true })
 
 require("lazydev").setup()
 require("nvim-treesitter").install(parsers)
+vim.o.foldcolumn = "auto:8"
+-- vim.o.foldcolumn = "1"
+-- vim.o.fillchars = 'eob: ,fold: ,foldinner: '
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.foldtext = ""
 vim.api.nvim_create_autocmd("FileType", {
   callback = function()
-    pcall(vim.treesitter.start)
+    if pcall(vim.treesitter.start) then
+      vim.wo.foldmethod = "expr"
+      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    end
   end,
+})
+require("treesitter-context").setup({
+  max_lines = 4,
+  multiline_threshold = 1,
 })
 require("telescope").setup({})
 require("telescope").load_extension "fzf"
@@ -115,3 +129,4 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
 vim.keymap.set("n", "<C-g>", "<cmd>LazyGit<cr>")
+vim.keymap.set("n", "ga", "<C-^>")
