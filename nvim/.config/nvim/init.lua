@@ -48,7 +48,7 @@ vim.diagnostic.config({ virtual_text = true })
 
 require("lazydev").setup()
 require("nvim-treesitter").install(parsers)
-vim.o.foldcolumn = "auto:8"
+vim.o.foldcolumn = "0"
 -- vim.o.foldcolumn = "1"
 -- vim.o.fillchars = 'eob: ,fold: ,foldinner: '
 vim.o.foldlevelstart = 99
@@ -130,3 +130,6 @@ vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
 vim.keymap.set("n", "<C-g>", "<cmd>LazyGit<cr>")
 vim.keymap.set("n", "ga", "<C-^>")
+vim.keymap.set("n", "<leader>z", function()
+  vim.wo.foldcolumn = vim.wo.foldcolumn == "0" and "auto:8" or "0"
+end)
