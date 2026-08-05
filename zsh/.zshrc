@@ -138,6 +138,7 @@ export VISUAL=nvim
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 export DOCKER_CLI_HINTS=false
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
