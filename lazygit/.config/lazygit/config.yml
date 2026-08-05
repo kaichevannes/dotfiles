@@ -1,0 +1,4 @@
+gui:
+  showBottomLine: false
+  showRandomTip: false
+  showCommandLog: false
