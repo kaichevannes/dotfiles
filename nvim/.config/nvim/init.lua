@@ -1,5 +1,5 @@
-local servers = { "lua_ls", "yamlls", "terraformls" }
-local parsers = { "lua", "yaml", "terraform" }
+local servers = { "lua_ls", "yamlls", "terraformls", "gopls", "bashls" }
+local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gosum", "gowork", "bash" }
 
 vim.g.mapleader = " "
 vim.o.number = true
@@ -133,3 +133,5 @@ vim.keymap.set("n", "ga", "<C-^>")
 vim.keymap.set("n", "<leader>z", function()
   vim.wo.foldcolumn = vim.wo.foldcolumn == "0" and "auto:8" or "0"
 end)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
