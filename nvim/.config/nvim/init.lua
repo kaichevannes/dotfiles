@@ -1,5 +1,5 @@
 local servers = { "lua_ls", "yamlls", "terraformls", "gopls", "bashls" }
-local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gosum", "gowork", "bash", "gotmpl" }
+local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gosum", "gowork", "bash", "helm_ls" }
 
 vim.g.mapleader = " "
 vim.o.number = true
@@ -39,21 +39,15 @@ vim.pack.add({
   "https://github.com/kdheepak/lazygit.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/tpope/vim-surround",
-  "https://github.com/tpope/vim-repeat"
+  "https://github.com/tpope/vim-repeat",
+  "https://github.com/towolf/vim-helm"
 })
 
-vim.filetype.add({
-  pattern = {
-    [".*/templates/.*%.ya?ml"] = "gotmpl",
-    [".*/templates/.*%.tpl"] = "gotmpl",
-  }
-})
 vim.lsp.config("yamlls", {
   settings = {
     yaml = {
       schemaStore = { enable = true },
       schemas = {
-        kubernetes = { "apps/**/*.yaml", "*-manifest.yaml" },
         ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.yaml",
       }
     }
