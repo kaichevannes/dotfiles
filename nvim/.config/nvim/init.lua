@@ -1,5 +1,5 @@
 local servers = { "lua_ls", "yamlls", "terraformls", "gopls", "bashls" }
-local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gosum", "gowork", "bash" }
+local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gosum", "gowork", "bash", "gotmpl" }
 
 vim.g.mapleader = " "
 vim.o.number = true
@@ -42,6 +42,23 @@ vim.pack.add({
   "https://github.com/tpope/vim-repeat"
 })
 
+vim.filetype.add({
+  pattern = {
+    [".*/templates/.*%.ya?ml"] = "gotmpl",
+    [".*/templates/.*%.tpl"] = "gotmpl",
+  }
+})
+vim.lsp.config("yamlls", {
+  settings = {
+    yaml = {
+      schemaStore = { enable = true },
+      schemas = {
+        kubernetes = { "apps/**/*.yaml", "*-manifest.yaml" },
+        ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.yaml",
+      }
+    }
+  }
+})
 vim.lsp.enable(servers)
 
 vim.diagnostic.config({ virtual_text = true })
