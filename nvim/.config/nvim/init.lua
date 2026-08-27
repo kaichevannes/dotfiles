@@ -97,6 +97,12 @@ vim.g.lazygit_floating_window_scaling_factor = 1
 vim.g.lazygit_floating_window_border_chars = { "", "", "", "", "", "", "", "" }
 vim.g.lazygit_floating_window_use_plenary = 0
 vim.g.lazygit_use_neovim_remote = 0
+vim.api.nvim_create_autocmd("TermClose", {
+  pattern = "*lazygit*",
+  callback = function(a)
+    vim.api.nvim_buf_delete(a.buf, { force = true })
+  end,
+})
 
 local fmt_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
