@@ -1,0 +1,9 @@
+theme = Sleepy Hollow
+
+font-family = "DankMono Nerd Font"
+font-size = 28
+
+background-opacity = 0.95
+background-blur = true
+
+confirm-close-surface = false
