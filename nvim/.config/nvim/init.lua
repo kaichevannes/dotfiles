@@ -1,5 +1,23 @@
-local servers = { "lua_ls", "yamlls", "terraformls", "gopls", "bashls" }
-local parsers = { "lua", "yaml", "terraform", "go", "gomod", "gowork", "gotmpl", "bash", "helm", "diff" }
+local servers = {
+  "bashls",
+  "gopls",
+  "lua_ls",
+  "terraformls",
+  "yamlls",
+}
+local parsers = {
+  "bash",
+  "diff",
+  "go",
+  "gomod",
+  "gowork",
+  "gotmpl",
+  "helm",
+  "lua",
+  "powershell",
+  "terraform",
+  "yaml",
+}
 
 vim.g.mapleader = " "
 vim.o.number = true
