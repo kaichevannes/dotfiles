@@ -72,6 +72,7 @@ vim.lsp.config("yamlls", {
   }
 })
 vim.lsp.enable(servers)
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.diagnostic.config({ virtual_text = true })
 
