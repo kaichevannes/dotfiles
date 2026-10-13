@@ -2,3 +2,5 @@ gui:
   showBottomLine: false
   showRandomTip: false
   showCommandLog: false
+git:
+  overrideGpg: true
